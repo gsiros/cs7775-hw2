@@ -13,7 +13,7 @@ def extract_prob2():
     experiment_number = 0
 
     # Open the file and read it line by line
-    with open('out.txt', 'r') as file:
+    with open('results/problem2/out.txt', 'r') as file:
         for line in file:
             # Check if the line starts with '!'
             if line.startswith('!'):
@@ -216,3 +216,5 @@ def extract_prob1c(TARGET_CLASS=3):
         
     plt.tight_layout()
     plt.show()
+
+extract_prob2()
