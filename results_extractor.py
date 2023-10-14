@@ -216,5 +216,3 @@ def extract_prob1c(TARGET_CLASS=3):
         
     plt.tight_layout()
     plt.show()
-
-extract_prob2()
