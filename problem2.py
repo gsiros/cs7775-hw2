@@ -86,7 +86,7 @@ for backdoor_trigger in b_triggers.keys():
             # Do the same for the test set:
             fmnist_clean_test = fmnist_poisoned["test"]
             fmnist_poisoned["test"] = [list(point) for point in fmnist_poisoned["test"]]
-            fmnist_test_class_c = [point for point in fmnist_poisoned["test"] if point[1] == c_class]
+            fmnist_test_class_c = []
             # Poison ALL the data points:
             for test_point in fmnist_poisoned["test"]:
                 if test_point[1] == c_class:
@@ -97,6 +97,7 @@ for backdoor_trigger in b_triggers.keys():
                     for (trigger_px_x, trigger_px_y, trigger_px_value) in b_triggers[backdoor_trigger]:
                         # Add position offsets to the trigger pixel coordinates:
                         test_point_pixels[0][trigger_px_x + x_offset][trigger_px_y + y_offset] = trigger_px_value
+                    fmnist_test_class_c.append(test_point)
 
             # Create data loaders
             train_loader = DataLoader(fmnist_poisoned['train'], batch_size=64, shuffle=True) # The backdoored training set, so that we can train the model.
